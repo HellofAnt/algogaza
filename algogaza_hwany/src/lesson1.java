@@ -1,4 +1,5 @@
-package PACKAGE_NAME;
-
-public class lesson1 {
+public class test {
+    public static void main(String[]args){
+            /// vs-code 변환
+    }
 }
