@@ -1,11 +1,11 @@
-package level1;
+package Hash;
 
 import java.util.*;
-
+// TODO 2020/07/19 by jeondoh
 // 완주하지 못한 선수
 // 정확성 50 효율성 50
 // https://programmers.co.kr/learn/courses/30/lessons/42576
-public class Hash {
+public class Hash1 {
     public static void main(String[] args) {
         String[] participant = {"marina", "josipa", "nikola", "vinko", "filipa"};
         String[] completion = {"josipa", "filipa", "marina", "nikola"};

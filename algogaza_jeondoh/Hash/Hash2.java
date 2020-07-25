@@ -1,11 +1,12 @@
-package level2;
+package Hash;
 
 import java.util.Arrays;
+// TODO 2020/07/19 by jeondoh
 // 해시 > 전화번호목록
 // 정확성 84.6 효율성 15.4 ...
 // Comment > 오히려 Arrays.sort 보다 2중 FOR문이 속도에서 더 빨랐음. 예상과 달랐음
 // https://programmers.co.kr/learn/courses/30/lessons/42577
-public class Hash {
+public class Hash2 {
     public static void main(String[] args) {
         String[] phone_book = {"119", "97674223", "1195524421"};
         String[] phone_book2 = {"123","456","789"};
