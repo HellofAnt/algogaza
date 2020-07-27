@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class array3{
     public static void main(String[] args) {
-        int[] a = {0,0,70,0,7000,70070,430,70770,70324,100000,10000,1000,1000,1000,1000,1000,1010,100,1010,101,101,10,99,99,99,99,99,9,99,9,9,9,9,999,9,999,999,9999,999999,909};
+        int[] a = {2,2021,2020,202020,2,2021,2020,202020,2,2021,2020,202020,2,2021,2020,202020,2,2021,2020,202020}; //2,2021,202020,20
         // Arrays.sort(a);
         System.out.println(Arrays.toString(a));
         solution(a);
@@ -18,15 +18,7 @@ public class array3{
             toString_numbers[i] = Integer.toString(numbers[i]);
         }
 
-        // 다른 주소를 가지게 할려면 배열에 일일이 담는 수 밖에 없나?
-        // String[] testt = new String[numbers.length];
-        // testt = toString_numbers;
-        // Arrays.sort(testt, (o1,o2)->(o2+o1).compareTo(o1+o2));
-
-        // System.out.println("hi"+Arrays.toString(toString_numbers));
-        // System.out.println("hi"+Arrays.toString(testt));
-
-        ranking(toString_numbers,arrayRank, 0);
+        ranking(toString_numbers,arrayRank);
 
         for(int i = 0; i < toString_numbers.length; i++){
             solted_numbers[toString_numbers.length - arrayRank[i] - 1] = toString_numbers[i]; 
@@ -46,14 +38,14 @@ public class array3{
         return answer.toString();
     }
 
-    public static int[] ranking(String[] toString_numbers,int[] arrayRank, int charAt_index) {
+    public static int[] ranking(String[] toString_numbers,int[] arrayRank) {
         for(int i=0; i < toString_numbers.length; i++){
             for(int j = i+1; j < toString_numbers.length; j++){
                 if(toString_numbers[i].equals(toString_numbers[j])){
                     ++arrayRank[j];
                     continue;
                 }
-                compare(i, j, toString_numbers, arrayRank, charAt_index);
+                compare(i, j, toString_numbers, arrayRank, 0, 0);
                 
             }
         }
@@ -62,31 +54,44 @@ public class array3{
         return arrayRank;
     }
     
-    // 재귀함수 쓰기 위해서
-    public static int[] compare(int i, int j,String[] toString_numbers, int[] arrayRank, int charAt_index){
-        if(toString_numbers[i].charAt(charAt_index) > toString_numbers[j].charAt(charAt_index)){
+    // 재귀함수 쓰기 위해서 100 1
+    public static int[] compare(int i, int j,String[] toString_numbers, int[] arrayRank, int charAt_i_index, int charAt_j_index){
+        if(toString_numbers[i].charAt(charAt_i_index) > toString_numbers[j].charAt(charAt_j_index)){
             ++arrayRank[i];
+
         }
-        if(toString_numbers[i].charAt(charAt_index) < toString_numbers[j].charAt(charAt_index)){
+        if(toString_numbers[i].charAt(charAt_i_index) < toString_numbers[j].charAt(charAt_j_index)){
             ++arrayRank[j];
         }
-        if(toString_numbers[i].charAt(charAt_index) == toString_numbers[j].charAt(charAt_index)){
-            if(toString_numbers[i].length() == charAt_index + 1){
-                if(toString_numbers[j].charAt(charAt_index + 1) >= toString_numbers[j].charAt(0)){
+        if(toString_numbers[i].charAt(charAt_i_index) == toString_numbers[j].charAt(charAt_j_index)){
+            if(toString_numbers[i].length() == charAt_i_index + 1){
+                if(toString_numbers[j].length() == charAt_j_index + 1){
                     ++arrayRank[j];
                 }
-                if(toString_numbers[j].charAt(charAt_index + 1) < toString_numbers[j].charAt(0)){
-                    ++arrayRank[i];
-                }
-            } else if(toString_numbers[j].length() == charAt_index + 1){
-                if(toString_numbers[i].charAt(charAt_index + 1) > toString_numbers[i].charAt(0)){
-                    ++arrayRank[i];
-                }
-                if(toString_numbers[i].charAt(charAt_index + 1) <= toString_numbers[i].charAt(0)){
+                else if(toString_numbers[j].charAt(charAt_j_index + 1) > toString_numbers[i].charAt(0)){
                     ++arrayRank[j];
+                }
+                else if(toString_numbers[j].charAt(charAt_j_index + 1) < toString_numbers[i].charAt(0)){
+                    ++arrayRank[i];
+                }
+                else if(toString_numbers[j].charAt(charAt_j_index + 1) == toString_numbers[i].charAt(0)){
+                    compare(i, j, toString_numbers, arrayRank, charAt_i_index = 0, ++charAt_j_index);
+                }
+            } else if(toString_numbers[j].length() == charAt_j_index + 1){
+                if(toString_numbers[i].length() == charAt_i_index + 1){
+                    ++arrayRank[j];
+                }
+                else if(toString_numbers[i].charAt(charAt_i_index + 1) > toString_numbers[j].charAt(0)){
+                    ++arrayRank[i];
+                }
+                else if(toString_numbers[i].charAt(charAt_i_index + 1) < toString_numbers[j].charAt(0)){
+                    ++arrayRank[j];
+                }
+                else if(toString_numbers[i].charAt(charAt_i_index + 1) == toString_numbers[j].charAt(0)){
+                    compare(i, j, toString_numbers, arrayRank, ++charAt_i_index, charAt_j_index = 0);
                 }
             } else{
-                compare(i, j, toString_numbers, arrayRank, ++charAt_index);
+                compare(i, j, toString_numbers, arrayRank, ++charAt_i_index, ++charAt_j_index);
             }
         }
 

@@ -30,8 +30,23 @@ public class test {
             System.out.println(d);
             System.out.println(f);
             System.out.println(g);
-            
-    }
+
+
+            for(int i = 0; i < 0; ++i){
+                System.out.println("test1");
+            }
+
+            String test2 = "test2";
+            String test3 = "test3";
+            test2 = test3;
+            // System.out.println(test2);
+            // test2 = "test4";
+            // System.out.println(test2);
+            // System.out.println(test3);
+            test3 = "test5";
+            System.out.println(test2); 
+            System.out.println(test3); 
+        }
 }
 
 
