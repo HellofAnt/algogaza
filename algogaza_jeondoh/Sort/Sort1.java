@@ -1,10 +1,11 @@
-package level1;
+package Sort;
 
 import java.util.Arrays;
+// TODO 2020/07/19 by jeondoh
 // 정렬 > K번째 수
 // 정확성 100
 // https://programmers.co.kr/learn/courses/30/lessons/42748
-public class Sort {
+public class Sort1 {
 
 	public static void main(String[] args) {
 		int[] array = {1, 5, 2, 6, 3, 7, 4};
