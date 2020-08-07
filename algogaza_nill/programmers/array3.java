@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class array3{
     public static void main(String[] args) {
-        int[] a = {2,2021,2020,202020,2,2021,2020,202020,2,2021,2020,202020,2,2021,2020,202020,2,2021,2020,202020}; //2,2021,202020,20
+        int[] a = {40,404}; //2,2021,202020,20
         // Arrays.sort(a);
         System.out.println(Arrays.toString(a));
         solution(a);
