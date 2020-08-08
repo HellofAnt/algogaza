@@ -46,6 +46,13 @@ public class test {
             test3 = "test5";
             System.out.println(test2); 
             System.out.println(test3); 
+
+            String[] test55 = {"a", "b"};
+            String test663 = "";
+            for(String test44 : test55){
+                test663 += test44;
+                System.out.println(test663);
+            }
         }
 }
 
