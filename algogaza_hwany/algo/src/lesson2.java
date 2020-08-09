@@ -1,21 +1,24 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class lesson2 {
 
     /**
      * 0 또는 양의 정수가 주어졌을 때, 정수를 이어 붙여 만들 수 있는 가장 큰 수를 알아내 주세요.
-     * 예를 들어, 주어진 정수가 [6, 10, 2]라면 [6102, 6210, 1062, 1026, 2610, 2106]를 만들 수 있고, 이중 가장 큰 수는 6210입니다.
+     * 예+를 들어, 주어진 정수가 [6, 10, 2]라면 [6102, 6210, 1062, 1026, 2610, 2106]를 만들 수 있고, 이중 가장 큰 수는 6210입니다.
      * 0 또는 양의 정수가 담긴 배열 numbers가 매개변수로 주어질 때, 순서를 재배치하여 만들 수 있는 가장 큰 수를 문자열로 바꾸어 return 하도록 solution 함수를 작성해주세요.
      */
     public static void main(String[] args) {
-        int[] param = {6, 10, 2};
+        int[] param = {3, 30, 34, 5, 9};
 
         Solution solution = new Solution();
-        int[] maxNums = solution.findBigNumber(param);
-        System.out.println("가장 큰 수 "+maxNums);
+        Solution2 solution2 = new Solution2();
+
+        List<String> strings = solution2.splitIntArr(param);
+        System.out.println(solution2.print(strings));
+        //int[] maxNums = solution.findBigNumber(param);
+        //System.out.println("123");
+        //System.out.println("가장 큰 수 "+ solution.print(maxNums));
     }
 }
 
@@ -23,6 +26,15 @@ class Solution {
 
     /// #. 만들어진 경우의수
     public List<int[]> numbers = new ArrayList<>();
+
+    public String print(int[] numbers){
+        StringBuilder buffer = new StringBuilder();
+
+        for(int number : numbers){
+            buffer.append(number);
+        }
+        return buffer.toString();
+    }
 
     /// 가장 큰 배열순을 찾아라
     public int[] findBigNumber(int[] params) {
@@ -90,6 +102,7 @@ class Solution {
             numbers.add(Arrays.copyOf(arr, arr.length));
             return;
         }
+
         for (int i = currentDepth; i < arr.length; i++) {
             swap(arr, i, currentDepth);
             perm(arr, currentDepth + 1);
@@ -97,4 +110,23 @@ class Solution {
         }
     }
 
+}
+
+/// 스트링 바이트코드에 대한 이해!
+class Solution2 {
+
+    List<String> splitIntArr(int[] numbers){
+        List<String> strings = new ArrayList<>();
+        for(int number : numbers) strings.add(String.valueOf(number));
+        strings.sort((o1, o2) -> (o2 + o1).compareTo(o1 + o2));
+        return strings;
+    }
+
+    public String print(List<String> numbers){
+        StringBuilder buffer = new StringBuilder();
+        for(String number : numbers){
+            buffer.append(number);
+        }
+        return buffer.toString();
+    }
 }
