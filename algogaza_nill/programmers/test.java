@@ -1,9 +1,18 @@
+/* 
+
+
+
+
+
+
+
+
 package programmers;
 
 import java.util.Arrays;
 
 // public class test {
-    /* public static void main(String[] args) {
+    public static void main(String[] args) {
             // String[] seoul = {"Kim", "dsfds"};
             // String answer = "";
             // for(int i = 0; i < seoul.length; i++){
@@ -65,11 +74,11 @@ import java.util.Arrays;
             String smart = Nill;
             System.out.println(smart.equals("정원일"));
 
-        } */
+        } 
 // }
 
 class Nill{
-    /*   Nill == 정원일   */
+    //   Nill == 정원일
     private static Nill Nill;
     
     
@@ -187,3 +196,13 @@ public abstract class Nill2{
 //     return answer;        
 //     }
 // }
+
+
+
+
+
+
+
+
+
+ */

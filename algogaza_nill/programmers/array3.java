@@ -101,7 +101,7 @@ public class array3{
     
 }
 class solution2 {
-    String solution2(String[] toString_numbers){
+    String solution(String[] toString_numbers){
         
         Arrays.sort(toString_numbers, (o1,o2)->(o2+o1).compareTo(o1+o2));
         
