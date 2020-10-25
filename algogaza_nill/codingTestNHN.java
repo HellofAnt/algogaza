@@ -7,11 +7,11 @@ public class codingTestNHN {
 
     private static int noOutOfBoundsArray(int nextSuleIdx, int nonSulesLength) {
         if (nextSuleIdx < 0) {
-            nextSuleIdx = nextSuleIdx + nonSulesLength;
+            nextSuleIdx += nonSulesLength;
             return noOutOfBoundsArray(nextSuleIdx, nonSulesLength);
         }
         if (nextSuleIdx > nonSulesLength - 1) {
-            nextSuleIdx = nextSuleIdx - nonSulesLength;
+            nextSuleIdx -= nonSulesLength;
             return noOutOfBoundsArray(nextSuleIdx, nonSulesLength);
         }
         return nextSuleIdx;

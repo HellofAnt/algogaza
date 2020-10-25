@@ -1,4 +1,5 @@
 package programmers;
+import java.util.Arrays;
 
 public class hash {
     public static void main(String[] args) {
