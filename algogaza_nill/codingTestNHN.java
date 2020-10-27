@@ -5,19 +5,18 @@ import java.util.Scanner;
 
 public class codingTestNHN {
 
-    private static int noOutOfBoundsArray(int nextSuleIdx, int nonSulesLength) {
-        if (nextSuleIdx < 0) {
-            nextSuleIdx = nextSuleIdx + nonSulesLength;
-            return noOutOfBoundsArray(nextSuleIdx, nonSulesLength);
-        }
-        if (nextSuleIdx > nonSulesLength - 1) {
-            nextSuleIdx = nextSuleIdx - nonSulesLength;
-            return noOutOfBoundsArray(nextSuleIdx, nonSulesLength);
-        }
-        return nextSuleIdx;
-        
-
-    }
+    // 수정 전 (out of range방지를 위해 재귀함수의 사용)
+    // private static int noOutOfBoundsArray(int nextSuleIdx, int nonSulesLength) {
+    //     if (nextSuleIdx < 0) {
+    //         nextSuleIdx += nonSulesLength;
+    //         return noOutOfBoundsArray(nextSuleIdx, nonSulesLength);
+    //     }
+    //     if (nextSuleIdx > nonSulesLength - 1) {
+    //         nextSuleIdx -= nonSulesLength;
+    //         return noOutOfBoundsArray(nextSuleIdx, nonSulesLength);
+    //     }
+    //     return nextSuleIdx;
+    // }
 
     private static boolean quickCheck(char sule, char[] namesOfQuickPlayers) {
         for (int i = 0; i < namesOfQuickPlayers.length; i++) {
@@ -43,21 +42,38 @@ public class codingTestNHN {
         char temp = 65;
         char[] nonSules = new char[numOfAllPlayers - 1];
         char secoundPlayer = 66;
-        int nextSuleIdx = 0;
+        // int nextSuleIdx = 0;
+        int nextSuleIdx2 = 0;
         for (int i = 0; i < numOfAllPlayers - 1; i++) {
             nonSules[i] = secoundPlayer++;
         }
         for (int i = 0; i < numOfGames; i++) {
-            nextSuleIdx = numOfMovesPerGame[i] + nextSuleIdx;
-            nextSuleIdx = noOutOfBoundsArray(nextSuleIdx, nonSules.length);
-            System.out.println("last nextIdx:  " + nextSuleIdx);
-            
+            // 수정 전 (out of range방지를 위해 재귀함수의 사용)
+            // nextSuleIdx = numOfMovesPerGame[i] + nextSuleIdx;
+            // nextSuleIdx = noOutOfBoundsArray(nextSuleIdx, nonSules.length);
+            // temp = sule; 
+            // sule = nonSules[nextSuleIdx2];
+            // if(quickCheck(sule, namesOfQuickPlayers)){
+            //     sule = temp;
+            // }else{
+            //     nonSules[nextSuleIdx2] = temp;
+            // }
+
+            //수정 후 (out of range방지를 위해 나머지, 절대값 사용)
+            if(numOfMovesPerGame[i] + nextSuleIdx2 < 0){
+                if(nonSules.length % Math.abs(numOfMovesPerGame[i] + nextSuleIdx2) == 0){
+                }else{
+                    nextSuleIdx2 = nonSules.length - (Math.abs(numOfMovesPerGame[i] + nextSuleIdx2) % nonSules.length);
+                }
+            }else{
+                nextSuleIdx2 = (numOfMovesPerGame[i] + nextSuleIdx2) % nonSules.length;
+            }            
             temp = sule; 
-            sule = nonSules[nextSuleIdx];
+            sule = nonSules[nextSuleIdx2];
             if(quickCheck(sule, namesOfQuickPlayers)){
                 sule = temp;
             }else{
-                nonSules[nextSuleIdx] = temp;
+                nonSules[nextSuleIdx2] = temp;
             }
             map.put(String.valueOf(sule) ,map.get(String.valueOf(sule)) + 1);
         }
